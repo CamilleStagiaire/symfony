@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %}home{% endblock %}
+{% block body %}
+
+
+
+<div class="container-fluid mt-5 text-center">
+    <h1>Progica</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis tempore ipsa modi! Exercitationem magnam
+        laborum, ad provident esse autem asperiores laudantium dicta velit nemo, sed pariatur. Recusandae ullam non
+        quis.</p>
+
+
+    <h2>Les gîtes disponibles aujourd'hui</h2>
+    <div class="row flex">
+        {% for property in properties %}
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a
+                            href="{{ path('property.show' , {id: property.id, slug: property.slug}) }}">{{property.title}}</a>
+                    </h5>
+                    <p class="card-text">{{property.city}} ({{property.postalCode}})</p>
+                    <div class="text-primary" style="font-weight: bold;">{{property.formattedPrice}} € la semaine</div>
+                </div>
+
+            </div>
+        </div>
+
+        {% endfor %}
+        <div>
+            <a href="{{ path('property.index')}}" class="btn btn-primary">Découvrez nos gîtes</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

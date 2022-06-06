@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+{% block title property.title %}
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-4">
+            <h1>{{property.title}}</h1>
+            <h2>{{property.rooms}} chambres - {{property.surface}} m²</h2>
+           
+            <div class="text-primary" style="font-size: 2.5rem; font-weight: bold;">{{property.formattedPrice}}€ la
+                semaine</div>
+            
+            <a href="#" class="btn btn-primary mt-4">Contacter Progica</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4">
+   
+
+    <p>{{property.description | nl2br}}</p>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Caractéristiques</h2>
+            <table class="table table-striped">
+                <tr>
+                    <td>Surface habitable</td>
+                    <td>{{property.surface}} m²</td>
+                </tr>
+                <tr>
+                    <td>Nombre de chambres</td>
+                    <td>{{property.rooms}} </td>
+                </tr>
+                <tr>
+                    <td>Nombre de couchages</td>
+                    <td>{{property.bed}} </td>
+                </tr>
+                <tr>
+                    <td>Animaux acceptés</td>
+                    <td>{{property.animal}} </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h2>Equipement</h2>
+            <p>{{property.equipement | nl2br}}</p>
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
