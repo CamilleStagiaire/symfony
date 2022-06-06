@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Property;
+use App\Entity\PropertySearch;
+use App\Form\PropertySearchType;
 use App\Repository\PropertyRepository;
+use ContainerM3FTifX\PaginatorInterface_82dac15;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Proxy\Proxy;
 use Doctrine\Persistence\ObjectManager;
@@ -11,6 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 class PropertyController extends AbstractController {
 
@@ -29,12 +35,20 @@ class PropertyController extends AbstractController {
     /**
      * @Route("/gites", name="property.index")
      */
-    public function index()
+    public function index( PaginatorInterface $paginator, Request $request): Response
     {
-        $properties = $this->repository->findAllVisible();
+        $search = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class, $search);
+        $form->handleRequest($request);
+
+        $properties = $paginator->paginate(
+            $this->repository->findAllVisibleQuery($search),
+            $request->query->getInt('page', 1), 9
+        );
         return $this->render("property/index.html.twig", [
             'current_menu' => 'properties',
-            'properties' => $properties
+            'properties' => $properties,
+            'form' => $form->createView()
         ]);
     }
 
