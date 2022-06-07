@@ -6,7 +6,6 @@ use App\Entity\Property;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
 use App\Repository\PropertyRepository;
-use ContainerM3FTifX\PaginatorInterface_82dac15;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Proxy\Proxy;
 use Doctrine\Persistence\ObjectManager;
