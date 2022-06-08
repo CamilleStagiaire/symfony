@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gérer les options{% endblock %}
+{% block body %}
+<body>
+    <div class="container">
+        <h1 class="mt-3 text-center">Gérer les options</h1>
+
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{message}}</div>
+        {% endfor %}
+<div class="col-md-6 offset-3">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for option in options %}
+                <tr>
+                    <td>{{ option.name }}</td>
+                    <td>
+                        <a href="{{ path('admin.option.edit', {id: option.id}) }}" class="btn btn-secondary">Modifier</a>
+                        <form method="post" action="{{ path('admin.option.delete', {id: option.id}) }}" style="display: inline-block;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce gîte ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ option.id)}}">
+                            <form method="post" action="{{ path('admin.option.delete', {id: option.id}) }}" style="display: inline-block;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce gîte ?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ option.id)}}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        <div class="text-center">
+            <a href="{{ path('admin.option.new') }}" class="btn btn-primary">Créer de nouvelles options</a>
+        </div>
+
+    </div>
+   
+</body>
+
+{% endblock %}

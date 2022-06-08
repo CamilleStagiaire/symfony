@@ -24,8 +24,6 @@ class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
-    
-
     private function findVisibleQuery(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
@@ -45,7 +43,6 @@ class PropertyRepository extends ServiceEntityRepository
             ->setParameter('maxprice', $search->getMaxPrice());
            }
            
-          
            if ($search->getMinSurface()) {
             $query = $query
             ->andWhere('p.surface >= :minsurface')
@@ -68,10 +65,8 @@ class PropertyRepository extends ServiceEntityRepository
         return $this->findVisibleQuery()
            ->setMaxResults(4)
            ->getQuery()
-           ->getResult();
-           
+           ->getResult();       
     }
-
 
     public function add(Property $entity, bool $flush = false): void
     {

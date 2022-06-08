@@ -14,22 +14,35 @@ class PropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('title', null, [
+                'label' => 'Titre'
+            ])
             ->add('description')
             ->add('surface')
-            ->add('rooms')
-            ->add('bed')
-            ->add('price')
-            ->add('city')
-            ->add('adress')
-            ->add('postal_code')
-            ->add('sold')
+            ->add('rooms', null, [
+                'label' => 'Nombre de chambres'
+            ])
+            ->add('bed', null, [
+                'label' => 'Nombre de couchages'
+            ])
+            ->add('price', null, [
+                'label' => 'Prix à la semaine'
+            ])
+            ->add('city', null, [
+                'label' => 'Ville'
+            ])
+            ->add('adress', null, [
+                'label' => 'Adresse'
+            ])
+            ->add('postal_code', null, [
+                'label' => 'Code Postal'
+            ])
+           // ->add('sold')
             ->add('animal')
-            ->add('equipement')
             ->add('options', EntityType::class, [
                 'class' => Option::class,
                 'choice_label' => 'name',
-                'multiple' => true
+                'multiple' => true,
             ])
         ;
     }

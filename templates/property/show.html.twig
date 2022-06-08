@@ -8,14 +8,16 @@
         <div class="col-md-8">
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 text-center">
             <h1>{{property.title}}</h1>
             <h2>{{property.rooms}} chambres - {{property.surface}} m²</h2>
            
-            <div class="text-primary" style="font-size: 2.5rem; font-weight: bold;">{{property.formattedPrice}}€ la
+            <div class="text-primary" style="font-size: 2.5rem; font-weight: bold;">{{property.formattedPrice}} € la
                 semaine</div>
             
-            <a href="#" class="btn btn-primary mt-4">Contacter Progica</a>
+            <div class="text-center">
+                <a href="#" class="btn btn-primary mt-4">Contacter Le propriétaire</a>
+            </div>
         </div>
     </div>
 </div>
@@ -49,8 +51,7 @@
             </table>
         </div>
         <div class="col-md-4">
-            <h2>Equipement</h2>
-            <p>{{property.equipement | nl2br}}</p>
+          
 
         </div>
     </div>

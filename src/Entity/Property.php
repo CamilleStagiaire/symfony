@@ -7,10 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
+ * @UniqueEntity("title")
  */
 class Property
 {
@@ -22,17 +25,20 @@ class Property
     private $id;
 
     /**
+     * @Assert\Length(min=5, max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * 
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=10, max=400)
      */
     private $surface;
 
@@ -62,6 +68,7 @@ class Property
     private $adress;
 
     /**
+     * @Assert\Regex("/^[0-9]{5}$/")
      * @ORM\Column(type="string", length=255)
      */
     private $postal_code;
@@ -78,13 +85,11 @@ class Property
      */
     private $animal;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $equipement;
+ 
 
     /**
-     * @ORM\ManyToMany(targetEntity=Option::class, mappedBy="properties")
+     * @ORM\ManyToMany(targetEntity=Option::class, inversedBy="properties")
+     * @ORM\OrderBy({"name" = "ASC"})
      */
     private $options;
 
@@ -257,19 +262,7 @@ class Property
         return $this;
     }
    
-    
-
-    public function getEquipement(): ?string
-    {
-        return $this->equipement;
-    }
-
-    public function setEquipement(?string $equipement): self
-    {
-        $this->equipement = $equipement;
-
-        return $this;
-    }
+ 
 
     /**
      * @return Collection<int, Option>

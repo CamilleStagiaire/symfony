@@ -6,16 +6,16 @@ use App\Entity\Property;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
 use App\Repository\PropertyRepository;
-use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Proxy\Proxy;
-use Doctrine\Persistence\ObjectManager;
+//use Doctrine\ORM\Mapping\Id;
+//use Doctrine\ORM\Proxy\Proxy;
+//use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+//use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 class PropertyController extends AbstractController {
 
@@ -29,7 +29,6 @@ class PropertyController extends AbstractController {
         $this->repository = $repository;
         $this->em = $em;
     }
-
 
     /**
      * @Route("/gites", name="property.index")
@@ -67,6 +66,5 @@ class PropertyController extends AbstractController {
             'current_menu' => 'properties'
         ]);
     }
-
 
 }
