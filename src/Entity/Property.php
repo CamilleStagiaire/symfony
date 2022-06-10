@@ -9,11 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
  * @UniqueEntity("title")
+ * @Vich\Uploadable
  */
 class Property
 {
@@ -23,6 +27,18 @@ class Property
      * @ORM\Column(type="integer")
      */
     private $id;
+
+     /**
+     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     */
+    private $filename;
+
+     /**
+     * @Vich\UploadableField(mapping="property_image", fileNameProperty="filename")
+     * @var File|null
+     */
+    private $imageFile;
 
     /**
      * @Assert\Length(min=5, max=255)
@@ -76,16 +92,12 @@ class Property
     /**
      * @ORM\Column(type="boolean")
      */
-    private $sold= false;
-
-  
+    private $sold = false;
 
     /**
      * @ORM\Column(type="string", length=3)
      */
     private $animal;
-
- 
 
     /**
      * @ORM\ManyToMany(targetEntity=Option::class, inversedBy="properties")
@@ -93,12 +105,17 @@ class Property
      */
     private $options;
 
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $updated_at;
+
     public function __construct()
     {
         $this->options = new ArrayCollection();
     }
 
-   
+
 
     public function getId(): ?int
     {
@@ -122,7 +139,6 @@ class Property
     {
         return (new Slugify())->slugify($this->title);
     }
-    
 
     public function getDescription(): ?string
     {
@@ -186,7 +202,7 @@ class Property
 
     public function getFormattedPrice(): string
     {
-    
+
         return number_format($this->price, 0, '', ' ');
     }
 
@@ -238,18 +254,6 @@ class Property
         return $this;
     }
 
-    public function getCratedAt(): ?\DateTimeImmutable
-    {
-        return $this->crated_at;
-    }
-
-    public function setCratedAt(\DateTimeImmutable $crated_at): self
-    {
-        $this->crated_at = $crated_at;
-
-        return $this;
-    }
-
     public function getAnimal(): ?string
     {
         return $this->animal;
@@ -261,8 +265,7 @@ class Property
 
         return $this;
     }
-   
- 
+
 
     /**
      * @return Collection<int, Option>
@@ -287,7 +290,62 @@ class Property
         if ($this->options->removeElement($option)) {
             $option->removeProperty($this);
         }
+        return $this;
+    }
+
+
+    /**
+     * @return null|string
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param null|string $filename
+     * @return Property
+     */
+    public function setFilename(?string $filename): Property
+    {
+        $this->filename= $filename;
 
         return $this;
     }
+
+    /**
+     * @return null|File
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param null|File $imageFile
+     * @return Property
+     */
+    public function setImageFile(?File $imageFile): Property
+    {
+        $this->imageFile= $imageFile;
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updated_at = new \DateTimeImmutable('now');
+        }
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+   
 }

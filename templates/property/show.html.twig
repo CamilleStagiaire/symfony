@@ -6,14 +6,15 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8">
-
+<img src="/images/properties/{{property.filename}}" alt="card-img-top" style="width: 100%; height: auto;">
         </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 mt-5 text-center">
             <h1>{{property.title}}</h1>
             <h2>{{property.rooms}} chambres - {{property.surface}} m²</h2>
            
             <div class="text-primary" style="font-size: 2.5rem; font-weight: bold;">{{property.formattedPrice}} € la
                 semaine</div>
+                 <p>{{property.description | nl2br}}</p>
             
             <div class="text-center">
                 <a href="#" class="btn btn-primary mt-4">Contacter Le propriétaire</a>
@@ -22,12 +23,8 @@
     </div>
 </div>
 
-
 <div class="container mt-4">
    
-
-    <p>{{property.description | nl2br}}</p>
-
     <div class="row">
         <div class="col-md-8">
             <h2>Caractéristiques</h2>
@@ -51,8 +48,14 @@
             </table>
         </div>
         <div class="col-md-4">
-          
-
+            <h2>Options</h2>
+            <ul class="list-group">
+                {% for option in property.options %}
+                <li class="list-group-item">{{option.name}}</li>
+                {% endfor %}
+            </ul>
+        
+   
         </div>
     </div>
 

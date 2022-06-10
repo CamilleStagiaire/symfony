@@ -18,7 +18,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminOptionController extends AbstractController
 {
 
-    
     public function __construct( EntityManagerInterface $em)
     {
         $this->em = $em;
