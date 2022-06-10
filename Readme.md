@@ -9,7 +9,7 @@
 ---
 - Installer un projet Symfony : Progica
 - Mettre en place les premières pages (Controller/Route)
-- Mettre en place la base de donnée : Progica (Config)
+- Mettre en place la base de donnée : Progica (Config) DOCTRINE
 - Créer une entité, make:entity Property
 - Gérer les options (table de relation manyToMany)
 - Création de formumlaires: make:form
