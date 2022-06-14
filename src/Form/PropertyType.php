@@ -38,6 +38,8 @@ class PropertyType extends AbstractType
             ->add('postal_code', null, [
                 'label' => 'Code Postal'
             ])
+           // ->add('lat')
+           // ->add('lng')
            // ->add('sold')
             ->add('animal')
 

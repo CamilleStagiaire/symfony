@@ -17,6 +17,11 @@ class PropertySearch
      */
     private $minSurface;
 
+/**
+     * @var int|null
+     */
+    private $minBed;
+
      /**
      * @var ArrayCollection
      */
@@ -63,6 +68,25 @@ class PropertySearch
     public function setMinSurface(int $minSurface): PropertySearch
     {
         $this->minSurface = $minSurface;
+
+        return $this;
+    }
+
+     /**
+     * @return int|null
+     */
+    public function getMinBed(): ?int
+    {
+        return $this->minBed;
+    }
+
+    /**
+     * @param int|null $bed)
+     * @return PropertySearch
+     */
+    public function setMinBed(int $minBed): PropertySearch
+    {
+        $this->minBed = $minBed;
 
         return $this;
     }

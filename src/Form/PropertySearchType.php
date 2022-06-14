@@ -32,6 +32,14 @@ class PropertySearchType extends AbstractType
                     'placeholder' => 'Surface minimale'
                 ]
             ])
+            ->add('minBed', IntegerType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Nombre de couchages minimum'
+                ]
+            ])
+
             ->add('options', EntityType::class, [
                 'required' => false,
                 'label' => false,

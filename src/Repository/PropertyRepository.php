@@ -49,6 +49,12 @@ class PropertyRepository extends ServiceEntityRepository
             ->setParameter('minsurface', $search->getMinSurface());
            }
 
+           if ($search->getMinBed()) {
+            $query = $query
+            ->andWhere('p.bed >= :minbed')
+            ->setParameter('minbed', $search->getMinBed());
+           }
+
            if ($search->getOptions()->count() >0 ) {
                $k = 0;
                foreach ($search->getOptions() as $k => $option) {

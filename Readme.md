@@ -18,7 +18,7 @@
 - Ajouter un gite / une option via l'apppication (EntityManager)
 
 
-//- Créer un Dashboard pour l'administrateur
+- Créer une partie administrateur avec make:user et make:auth en cryptant le mot de passe
 
 - Mettre en place les contraintes de Validation pour les formulaires
 - Mettre en place un système de pagination pour tous les Gites
@@ -29,11 +29,17 @@
      - Par Options
 - Mettre en place un formulaire de contact avec Maildev
 
-### librairies instalées
+### librairies installées
 
 - paginator
 - slugify
 - vich : insertion et télechargement des images
+sweet alert 2 pour les l'affichage des options
+
+
+### Utilisateurs
+role admin : admin mdp: admin
+role user: John mdp: Doe
 
 
 

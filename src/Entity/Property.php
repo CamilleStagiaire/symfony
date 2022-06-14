@@ -41,20 +41,21 @@ class Property
     private $imageFile;
 
     /**
-     * @Assert\Length(min=5, max=255)
+     * @Assert\Length(min=3, max=50)
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
      * 
-     * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(min=10, max=255)
+     * @ORM\Column(type="text", length=255)
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Range(min=10, max=400)
+     * @Assert\Range(min=30, max=300)
      */
     private $surface;
 
@@ -109,6 +110,16 @@ class Property
      * @ORM\Column(type="datetime_immutable")
      */
     private $updated_at;
+
+    /**
+     * 
+     */
+   // private $lat;
+
+    /**
+     * 
+     */
+   // private $lng;
 
     public function __construct()
     {
@@ -346,6 +357,30 @@ class Property
 
         return $this;
     }
+
+  //  public function getLat(): ?float
+   // {
+     //   return $this->lat;
+   // }
+
+   // public function setLat(float $lat): self
+  //  {
+     //   $this->lat = $lat;
+
+    //     return $this;
+    // }
+
+    // public function getLng(): ?float
+    // {
+    //     return $this->lng;
+    // }
+
+    // public function setLng(float $lng): self
+    // {
+    //     $this->lng = $lng;
+
+    //     return $this;
+    // }
 
    
 }
