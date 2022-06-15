@@ -29,7 +29,6 @@ class UserFixtures extends Fixture
 
         $manager->flush();
 
-
         $user = new User();
         $user
             ->setUsername("John")

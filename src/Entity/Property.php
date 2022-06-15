@@ -112,6 +112,11 @@ class Property
     private $updated_at;
 
     /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="properties")
+     */
+    private $user;
+
+    /**
      * 
      */
    // private $lat;
@@ -381,6 +386,18 @@ class Property
 
     //     return $this;
     // }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 
    
 }
