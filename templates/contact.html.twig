@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Contact
+{% endblock %}
+{% block body %}
+	<body>
+		<h1 class="text-center mt-3 mb-3">Contacter Progica</h1>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success tesxt-center">{{message}}</div>
+		{% endfor %}
+
+		<div class="row">
+			<div class="col-md-4 offset-4">
+				{{ form_start(form) }}
+				{{ form_rest(form) }}
+
+				<input type="submit" class="btn btn-primary" value="Envoyer">
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</body>
+
+{% endblock %}
