@@ -32,7 +32,7 @@ class UserFixtures extends Fixture
         $user = new User();
         $user
             ->setUsername("John")
-            ->setPassword($this->hasher->hashPassword($admin, "Doe"))
+            ->setPassword($this->hasher->hashPassword($user, "Doe"))
             ->setRoles(["ROLE_USER"]);
             
         $manager->persist($user);

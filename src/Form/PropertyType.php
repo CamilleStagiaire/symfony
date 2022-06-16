@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Option;
 use App\Entity\Property;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -51,6 +52,15 @@ class PropertyType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
             ])
+
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'username',
+                'multiple' => false,
+                'label' => 'Propriétaire'
+            ])
+
+
         ;
     }
 

@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil{% endblock %}
+{% block body %}
+<body>
+    <h1 class="text-center mt-3">Votre profil</h1>
+    <h4 class="text-center">Bonjour {{app.user.username}}</h4>
+
+{% for property in app.user.properties%}
+{{property.title}}
+    
+{% endfor %}
+</body>
+
+{% endblock %}
