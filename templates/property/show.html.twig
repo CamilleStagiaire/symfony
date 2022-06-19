@@ -8,23 +8,23 @@
 			<div class="col-md-8">
 				<img src="/images/properties/{{property.filename}}" alt="card-img-top" style="width: 100%; height: auto;">
 			</div>
-			<div class="col-md-4 mt-5 text-center">
-				<h1>{{property.title}}</h1>
-				<h2>{{property.rooms}}
-					chambres -
-					{{property.surface}}
-					m²</h2>
-
-				<div class="text-primary" style="font-size: 2.5rem; font-weight: bold;">{{property.formattedPrice}}
-					€ la
-					                semaine</div>
-				<p>{{property.description | nl2br}}</p>
-
-				<div class="text-center mt-4">
-					<h4>Propriétaire du gîte :</h4>
-					<p class="mt-2">{{property.user.username}}</p>
-					<h4>Personne à contacter :</h4>
-					<p class="mt-2"></p>
+			<div class="col-md-4 mt-5">
+				<div class="text-center">
+					<h1>{{property.title}}</h1>
+					<h2>{{property.rooms}} chambres - {{property.surface}} m²
+					</h2>
+				</div>
+				<div class="text-center">
+					<div class="text-primary" style="font-size: 2.5rem; font-weight: bold;">{{property.formattedPrice}} € la semaine</div>
+					<p>{{property.description | nl2br}}</p>
+					<h5>{{ property.postalCode }} - {{ property.city }}</h5>
+				</div>
+				<div class="mt-4">
+					<h5>Pour réserver ce gîte contactez le proriétaire : </h5>
+					<h6 class="mt-2 text-center">{{ app.user.nom }} {{ app.user.prenom }}</h6>
+					<p> Par téléphone au {{ app.user.telephone }}</p>
+					<p> Par mail a <a href="#">{{ app.user.email }}</a>
+					
 				</div>
 			</div>
 		</div>
@@ -69,7 +69,3 @@
 		</div>
 	</div>
 {% endblock %}
-
-
-
-
