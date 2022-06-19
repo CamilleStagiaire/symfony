@@ -21,9 +21,9 @@
 				</div>
 				<div class="mt-4">
 					<h5>Pour réserver ce gîte contactez le proriétaire : </h5>
-					<h6 class="mt-2 text-center">{{ app.user.nom }} {{ app.user.prenom }}</h6>
-					<p> Par téléphone au {{ app.user.telephone }}</p>
-					<p> Par mail a <a href="#">{{ app.user.email }}</a>
+					<h6 class="mt-2 text-center">{{ property.user.nom }} {{property.user.prenom }}</h6>
+					<p> Par téléphone au {{ property.user.telephone }}</p>
+					<p> Par mail a <a href="#">{{ property.user.email }}</a>
 					
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 					</tr>
 					<tr>
 						<td>Animaux acceptés</td>
-						<td>{{property.animal}}
+						<td>{{property.animal}} + {{property.tarifAnimal}} €
 						</td>
 					</tr>
 				</table>

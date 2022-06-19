@@ -92,7 +92,7 @@ class AdminOptionController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $option->getId(), $request->get('_token'))) {
             $this->em->remove($option);
             $this->em->flush();
-            $this->addFlash('success', 'Gîte supprimé avec succès');
+            $this->addFlash('success', 'Option supprimée avec succès');
         }
         return $this->redirectToRoute('admin.option.index');
     }

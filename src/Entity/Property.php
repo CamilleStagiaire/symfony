@@ -117,6 +117,11 @@ class Property
     private $user;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $tarif_animal;
+
+    /**
      * 
      */
    // private $lat;
@@ -395,6 +400,18 @@ class Property
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTarifAnimal(): ?int
+    {
+        return $this->tarif_animal;
+    }
+
+    public function setTarifAnimal(?int $tarif_animal): self
+    {
+        $this->tarif_animal = $tarif_animal;
 
         return $this;
     }
